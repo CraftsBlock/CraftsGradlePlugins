@@ -1,0 +1,40 @@
+plugins {
+    id 'java-gradle-plugin'
+    id "maven-publish"
+}
+
+version = '0.0.20'
+
+gradlePlugin {
+    plugins {
+        publish {
+            id = "de.craftsblock.gradle.publish"
+            implementationClass = "de.craftsblock.gradle.publish.PublishPlugin"
+        }
+    }
+}
+
+def envFile = file(".env.repo")
+def env = new Properties()
+
+if (!envFile.exists()) {
+    envFile.parentFile?.mkdirs()
+    envFile.createNewFile()
+}
+
+envFile.withInputStream {
+    env.load(it)
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri(env["repo.gradle.url"])
+
+            credentials {
+                username = env["repo.gradle.username"]
+                password = env["repo.gradle.password"]
+            }
+        }
+    }
+}

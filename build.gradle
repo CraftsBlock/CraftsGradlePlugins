@@ -1,0 +1,5 @@
+group = "de.craftsblock.gradle"
+
+subprojects { sub ->
+    group = rootProject.group
+}
