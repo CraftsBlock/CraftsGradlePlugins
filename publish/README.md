@@ -4,7 +4,8 @@
 
 A minimal Gradle plugin to standardize Maven publishing across CraftsBlock projects.
 
-> ⚠️ **Developed for CraftsBlock**    
+> [!WARNING]
+> This plugin has been mainly developed for usage in other CraftsBlock projects!   
 > It is **not intended to be a general-purpose publishing solution** and may change without notice.
 
 ---

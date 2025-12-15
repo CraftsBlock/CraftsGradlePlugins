@@ -7,7 +7,7 @@
 
 A collection of Gradle plugins developed and maintained for internal use at **CraftsBlock**.
 
-> ⚠️ **Developed for CraftsBlock**  
+> [!WARNING]  
 > This repository bundles multiple Gradle plugins that are **exclusively intended for CraftsBlock projects**.  
 > The APIs are opinionated, may change without notice, and are **not designed for public use**.
 
