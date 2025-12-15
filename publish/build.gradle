@@ -1,6 +1,6 @@
 plugins {
-    id 'java-gradle-plugin'
-    id "maven-publish"
+    id "java-gradle-plugin"
+    id "de.craftsblock.gradle.publish" version "0.0.20"
 }
 
 version = '0.0.20'
@@ -26,14 +26,31 @@ envFile.withInputStream {
     env.load(it)
 }
 
-publishing {
-    repositories {
-        maven {
-            url = uri(env["repo.gradle.url"])
+craftsPublish {
+    artifactId = "publish"
+    name = "Publish"
 
-            credentials {
-                username = env["repo.gradle.username"]
-                password = env["repo.gradle.password"]
+    component = project.components.java
+
+    pom {
+        name = "CraftsGradlePlugins"
+        description = "A minimal Gradle plugin to standardize Maven publishing across CraftsBlock projects."
+
+        scm {
+            url = "https://github.com/CraftsBlock/CraftsGradlePlugins"
+            connection = "scm:git:git://github.com/CraftsBlock/CraftsGradlePlugins.git"
+            developerConnection = "scm:git:git@github.com:CraftsBlock/CraftsGradlePlugins.git"
+        }
+
+        issueManagement {
+            system = "github"
+            url = "https://github.com/CraftsBlock/CraftsGradlePlugins/issues"
+        }
+
+        licenses {
+            license {
+                name = "Apache License 2.0"
+                url = "https://github.com/CraftsBlock/CraftsGradlePlugins/blob/master/LICENSE"
             }
         }
     }
