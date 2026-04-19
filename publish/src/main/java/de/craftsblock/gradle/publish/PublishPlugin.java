@@ -33,7 +33,7 @@ public class PublishPlugin implements Plugin<@NotNull Project> {
             Path envFile = p.file(".env.repo").toPath();
             Properties env = getRepoEnv(envFile);
 
-            String repoToDeploy = p.getVersion().toString().matches("^\\d+(?:\\.\\d+)*$")
+            String repoToDeploy = p.getVersion().toString().matches("^\\d+(?:[.-]\\d+)*$")
                     ? "releases"
                     : "experimental";
 
